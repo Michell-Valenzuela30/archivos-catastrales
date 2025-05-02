@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla 4x2 con Grid</title>
+  <style>
+    body {
+      font-family: Times New Roman;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .center {
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .titulo {
+      background-color: #D99594;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      padding: 5px;
+    }
+
+    .principal{
+      margin-top:210px;
+      font-size: 30px;
+    }
+    
+    .firma{
+      text-decoration: none;
+      text-decoration-thickness: none;
+    }
+
+    .bajo{
+      align-items: flex-end;
+    }
+
+    .resaltar, .principal {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .tabla-grid {
+      gap: 0;
+      border: 1px solid black;
+      width: 750px;
+      font-size: 14px;
+      margin: 5px auto;
+    }
+
+    .tabla-grid:first-child,
+    .tabla-grid:nth-child(2),
+    .tabla-grid:nth-child(3),
+    .membrete-grid  {
+      display: grid;
+      grid-template-columns: 500px 1fr;
+      /* 2 columnas */
+      grid-template-rows:
+        [f-line] 20px [s-line] 20px [t-line] 20px [th-line]
+        /* 3 filas */
+      ;
+
+    }
+
+    .tabla-grid:nth-child(2) {
+      grid-template-columns: 160px 1fr;
+      /* 5 columnas iguales */
+      grid-template-rows:20px  35px  40px  20px 
+        /* 4 filas */
+      ;
+    }
+    .tabla-grid:nth-child(3) {
+      grid-template-columns: 100px 220px 270px 70px 90px;
+      /* 2 columnas iguales */
+      grid-template-rows:repeat(9, 20px);
+        /* 9 filas */
+      ;
+    }
+
+    .tabla-grid:nth-child(4) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* 2 columnas iguales */
+      grid-template-rows: 25px 60px 100px;
+        /* 9 filas */
+      ;
+    }
+    
+    .membrete-grid {
+      grid-template-columns: 200px repeat(4, 1fr);
+      /* 5 columnas */
+      grid-template-rows: 20px 10px 20px 20px;
+        /* 4 filas */
+      width: 500px;
+      left: 250px;
+      position: relative;
+    }
+
+    .grid-item {
+      border: 1px solid black;
+      display: flex;
+    }
+
+    .grid-item:nth-child(1) {
+      grid-column: 1/3;
+      grid-row: 1/ 2;
+      /* Ocupa 4 filas */
+    }
+
+    .grid-item:nth-child(2) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+
+    .grid-item:nth-child(3) {
+      grid-column: 2/3;
+      grid-row: 2/3;
+    }
+
+    .grid-item:nth-child(4) {
+      grid-column: 1/2;
+      grid-row: 3/5;
+    }
+
+    .grid-item:nth-child(5) {
+      grid-column: 2/3;
+      grid-row: 3/4;
+    }
+
+    .grid-item:nth-child(6) {
+      grid-column: 2/3;
+      grid-row: 4/5;
+    }
+    .Last:nth-child(1),
+    .Last:nth-child(2),
+    .Last:nth-child(3) {
+      grid-column: 1/6;
+      /* Ocupa 4 filas */
+    }
+    .Last:nth-child(2) {
+      grid-row: 2/3;
+    }
+    .Last:nth-child(3) {
+      grid-column: 1/6;
+      grid-row: 3/4;
+    }
+    /*intocables*/
+    
+    .Last:nth-child(4) {
+      grid-column: 1/4;
+      grid-row: 4/5;
+    }
+    .Last:nth-child(5) {
+      grid-column: 4/5;
+      grid-row: 4/5;
+    }
+    .Last:nth-child(6) {
+      grid-column: 5/6;
+      grid-row: 4/5;
+    }
+    .Last:nth-child(7) {
+      grid-column: 1/2;
+      grid-row: 5/6;
+    }
+    .Last:nth-child(8) {
+      grid-column: 2/4;
+      grid-row: 5/6;
+    }
+    .Last:nth-child(9) {
+      grid-column: 4/5;
+      grid-row: 5/6;
+    }
+    .Last:nth-child(10) {
+      grid-column: 5/6;
+      grid-row: 5/6;
+    }
+    .Last:nth-child(11) {
+      grid-column: 1/2;
+      grid-row: 6/7;
+    }
+    .Last:nth-child(12) {
+      grid-column: 2/4;
+      grid-row: 6/7;
+    }
+    .Last:nth-child(13) {
+      grid-column: 4/5;
+      grid-row: 6/7;
+    }
+    .Last:nth-child(14) {
+      grid-column: 5/6;
+      grid-row: 6/7;
+    }
+    .Last:nth-child(15) {
+      grid-column: 1/2;
+      grid-row: 7/8;
+    }
+    .Last:nth-child(16) {
+      grid-column: 2/4;
+      grid-row: 7/8;
+    }
+    .Last:nth-child(17) {
+      grid-column: 4/5;
+      grid-row: 7/8;
+    }
+    .Last:nth-child(18) {
+      grid-column: 5/6;
+      grid-row: 7/8;
+    }
+    .Last:nth-child(19) {
+      grid-column: 1/2;
+      grid-row: 8/9;
+    }
+    .Last:nth-child(20) {
+      grid-column: 2/4;
+      grid-row: 8/9;
+    }
+    .Last:nth-child(21) {
+      grid-column: 4/5;
+      grid-row: 8/9;
+    }
+    .Last:nth-child(22) {
+      grid-column: 5/6;
+      grid-row: 8/9;
+    }
+    .Last:nth-child(23) {
+      grid-column: 1/3;
+      grid-row: 9/10;
+    }
+    .Last:nth-child(24) {
+      grid-column: 3/6;
+      grid-row: 9/10;
+    }
+    .ultimate:nth-child(1) {
+      grid-column: 1/4;
+      grid-row: 1/2;
+    }
+    .ultimate:nth-child(2) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+    .ultimate:nth-child(3) {
+      grid-column: 2/3;
+      grid-row: 2/3;
+    }
+    .ultimate:nth-child(4) {
+      grid-column: 3/4;
+      grid-row: 2/3;
+    }
+    .ultimate:nth-child(5) {
+      grid-column: 1/2;
+      grid-row: 3/4;
+    }
+    .ultimate:nth-child(6) {
+      grid-column: 2/3;
+      grid-row: 3/4;
+    }
+    
+    .ultimate:nth-child(7) {
+      grid-column: 3/4;
+      grid-row: 3/4;
+    }
+    main{
+      width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-image: url(fondo.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border: .5px solid rgb(218, 212, 212);
+    }
+    .nou-grid{
+      margin-bottom: 200px;
+    }
+      
+    .none{
+      width: 100px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+      
+    .none:nth-child(3){
+      width: 50px;
+    }
+
+    .memb-item {
+      border: 1px solid black;
+      display: flex;
+    }
+    .memb-item:nth-child(1) {
+      grid-column: 2/3;
+      grid-row: 1/ 2;
+    }
+    .memb-item:nth-child(2) {
+      grid-column: 3/4;
+      grid-row: 1/2;
+    }
+    .memb-item:nth-child(3) {
+      grid-column: 4/5;
+      grid-row: 1/2;
+    }
+    .memb-item:nth-child(4) {
+      grid-column: 5/6;
+      grid-row: 1/2;
+    }
+    .memb-item:nth-child(5) {
+      grid-column: 1/4;
+      grid-row: 3/4;
+    }
+    .memb-item:nth-child(6) {
+      grid-column: 4/6;
+      grid-row: 3/4;
+    }
+    .memb-item:nth-child(7) {
+      grid-column: 1/4;
+      grid-row: 4/5;
+    }
+    .memb-item:nth-child(8) {
+      grid-column: 4/6;
+      grid-row: 4/5;
+    }
+    .memb-item:nth-child(5),
+    .memb-item:nth-child(7) {
+      border: none;
+      justify-content: flex-end;
+      margin-right: 10px;
+    }
+    .input-box {
+      border: none;
+      background: transparent;
+    }
+    .input-box:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <section>
+      <h1 class="principal center">CEDULA CATASTRAL</h1>
+      <div class="membrete-grid">
+        <div class="memb-item">20</div>
+        <div class="memb-item">09</div>
+        <div class="memb-item">01</div>
+        <div class="memb-item">URB</div>
+          <label class="memb-item" for="num_cat">NUMERO DE CEDULA CATASTRAL</label>
+          <input type="text" class="memb-item" id="num_cat">
+        <label class="memb-item" for="num_exp">NUMERO DE EXPEDIENTE</label>
+        <input class="memb-item" id="num_exp"></input>
+
+      </div>
+
+    </section>
+    <section>
+      <div class="tabla-grid ">
+        <div class="grid-item titulo center">DATOS DEL PROPIETARIO</div>
+        <label class="grid-item center" for="nom_ape">NOMBRE Y APELLIDO</label>
+        <label class="grid-item center" for="ced_rif">CEDULA DE IDENTIDAD</label>
+        <input class="grid-item" id="nom_ape"></input>
+        <input class="grid-item" id="ced_rif"></input>
+      </div>
+      </div>
+    
+      <div class="tabla-grid">
+        <div class="grid-item titulo center">DATOS DEL INMUEBLE</div>
+        <label class="grid-item center" for="direccion">DIRECCION DEL INMUEBLE</label>
+        <input type="text" name="" id="direccion">
+
+        <label class="grid-item center" for="ambito">AMBITO</label>
+
+        <div class="grid-item">
+          <label for="terreno">TERRENO 
+            <input type="checkbox" name="terreno" id="terreno"></label>
+          <label for="casa">CASA
+            <input type="checkbox" name="casa" id="casa"></label>
+          </label>
+          <label for="local">LOCAL
+            <input type="checkbox" name="local" id="local"></label>
+          </label>
+        </div>
+
+        <div class="grid-item">
+          <label for="rural">RURAL
+            <input type="checkbox" name="rural" id="rural"></label>
+          <label for="urbano">URBANO
+            <input type="checkbox" name="urbano" id="urbano"></label>
+          </label>
+        </div>
+
+      </div>
+    
+      <div class="tabla-grid">
+        <div class="grid-item Last center titulo">DATOS DEL DOCUMENTO</div>
+        <div class="grid-item Last center">
+          <label for="registrado">REGISTRADO
+          <input type="checkbox" name="registrado" id="registrado"></label>
+          <label for="notariado">NOTARIADO
+            <input type="checkbox" name="notariado" id="notariado">
+          </label>
+          <label for="juzgado">JUZGADO</label>
+          <input type="checkbox" name="juzgado" id="juzgado"></label>
+        </div>
+        <div class="grid-item Last"></div>
+        <div class="grid-item Last center titulo">LINDEROS Y MEDIDAS DEL TERRENO</div>
+        <div class="grid-item Last titulo">MT2</div>
+        <div class="grid-item Last titulo">Mt2</div>
+
+        <label class="grid-item Last center" for="norte" >NORTE</label>
+        <input class="grid-item Last" id="norte"></input>
+        <input class="grid-item Last"></input>
+        <input class="grid-item Last"></input>
+
+        <label class="grid-item Last center" for="sur">SUR</label>
+        <input class="grid-item Last" id="sur"></input>
+        <div class="grid-item Last"></div>
+        <div class="grid-item Last"></div>
+
+        <label class="grid-item Last center" for="este">ESTE</label>
+        <input class="grid-item Last" id="este"></input>
+        <div class="grid-item Last"></div>
+        <div class="grid-item Last"></div>
+
+        <label class="grid-item Last center" for="oeste">OESTE</label>
+        <input class="grid-item Last" id="oeste"></input>
+        <div class="grid-item Last"></div>
+        <div class="grid-item Last"></div>
+
+        <label class="grid-item Last center" for="avaluo">AVALUO TOTAL DEL INMUEBLE</label>
+        <input class="grid-item Last" id="avaluo"></input>
+
+      </div>
+
+      <div class="tabla-grid">
+        <label class="grid-item ultimate" for="descripcion">SOLICITADA PARA:
+          <input type="text" class="input-box" id="descripcion" style="width: 81.3%;">
+        </label>
+        <div class="grid-item titulo center firma ultimate">FIRMA: ALCALDE DEL MUNICIPIO GARCIA DE HEVIA</div>
+        <div class="grid-item titulo center firma ultimate">FIRMA: DIRECTORA DE RECAUDACION Y TRIBUTOS MUNICIPALES</div>
+        <div class="grid-item titulo center firma ultimate">FIRMA: JEFE DE CATASTRO</div>
+        <div class="grid-item center bajo ultimate">LCDO. WILLINGTON VIVAS BAYTER</div>
+        <div class="grid-item center bajo ultimate">LCDA. LISETT C. GRUESO DE SANCHEZ</div>
+        <div class="grid-item center bajo ultimate">T.S.U. PEDRO ALEJANDRO DAZA</div>
+    
+      </div>
+      <div class="center nou-grid">
+        <span class="resaltar">FECHA DE EXPEDICION: </span>
+        <input class="none" type="date" class="input-box">
+        <span class="resaltar">NOTA:</span> 
+        LA CEDULA CATASTRAL TIENE <br>VIGENCIA HASTA EL <input class="none" type="text">DEL AÑO <input class="none" type="text" name="" id=""></div>
+    </section>
+  </main>
+
+</body>
+
+</html>
